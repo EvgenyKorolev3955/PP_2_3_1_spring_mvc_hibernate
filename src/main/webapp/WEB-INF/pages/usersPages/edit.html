@@ -16,7 +16,7 @@
     <hr/>
     <br>
     <br>
-    <form th:method="POST" th:action="@{/users/update}" th:object="${user}">
+    <form th:method="POST" th:action="@{/users/edit}" th:object="${user}">
         <div class="mb-3">
             <input th:field="*{id}" type="hidden" class="form-control" id="id">
         </div>

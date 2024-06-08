@@ -49,7 +49,7 @@ public class UserController {
         return "usersPages/edit";
     }
 
-    @PostMapping("/update")
+    @PostMapping("/edit")
     public String updateUser(@ModelAttribute("user") User user) {
 
         userService.updateUser(user);
