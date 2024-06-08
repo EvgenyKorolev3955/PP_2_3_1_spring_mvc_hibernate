@@ -28,7 +28,8 @@ public class UserController {
     }
 
     @GetMapping(value = "/new")
-    public String addUser(@ModelAttribute("user") User user, Model model) {
+    public String getNewUserForm(@ModelAttribute("user") User user, Model model) {
+
         model.addAttribute("msg", "Создать нового пользователя");
         return "usersPages/new";
     }
@@ -41,10 +42,18 @@ public class UserController {
     }
 
     @GetMapping("/edit")
-    public String edit(@RequestParam(value = "id") long id, Model model) {
+    public String getEditUserForm(@RequestParam(value = "id") long id, Model model) {
+
         model.addAttribute("user", userService.getUserById(id));
         model.addAttribute("msg", "Изменить существующего пользователя");
-        return "usersPages/new";
+        return "usersPages/edit";
+    }
+
+    @PostMapping("/update")
+    public String updateUser(@ModelAttribute("user") User user) {
+
+        userService.updateUser(user);
+        return "redirect: /users";
     }
 
     @PostMapping("/delete")
